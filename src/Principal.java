@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
 public class Principal {
 
 	public static void main(String[] args) {
@@ -29,11 +29,11 @@ public class Principal {
 				System.out.println("Valor não existe na lista!");	
 			break;
 		case 4:
-/*			ArrayList<String> listar = new ArrayList<String>();
+			ArrayList<String> listar = new ArrayList<String>();
 				 listar = lista.Listar();
 				 for(String elemento : listar){
 						System.out.print(elemento + " ");
-					}*/
+					}
 			break;			
 		default:
 			System.out.println("Opção Inválida");
@@ -48,4 +48,4 @@ public class Principal {
 		return sc.nextInt();
 	}
 
-}
+}/*
