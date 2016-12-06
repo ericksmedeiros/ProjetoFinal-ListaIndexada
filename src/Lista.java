@@ -1,78 +1,89 @@
-; import java.util.ArrayList;
-import java.util.EmptyStackException;
+import java.util.ArrayList;
 
 public class Lista {
-	private Node 	first 	= null
-				, 	last 	= null;
-		//		,	value	= null;
-	
-	public void setFirst(Node first) {
-		this.first = first;
+	private Node primeiro = null;
+	private Node ultimo = null;	
+
+	public void setPrimeiro(Node primeiro) {
+		this.primeiro = primeiro;
 	}
-	public Node getFirst() {
-		return first;
+	public Node getPrimeiro() {
+		return primeiro;
 	}
-	public void setLast(Node last) {
-		this.last = last;
+	public void setUltimo(Node ultimo) {
+		this.ultimo = ultimo;
 	}
-	public Node getLast() {
-		return last;
+
+	public Node getUltimo() {
+		return ultimo;
 	}
-	public ArrayList<int> Listar(){
-		ArrayList<int> lista = new ArrayList<int>();		
-		Node aux = getFirst();			
-		while(aux != null){
-			int vl = aux.getValue(); 
-			lista.add(vl);
-			aux = aux.getLast();
+	//Percorre os nós da lista atribuindo os valores de cada nó em um ArrayList enquanto o próximo nó não for nulo.
+	public ArrayList<String> Listar() {
+		ArrayList<String> lista = new ArrayList<String>();		
+		if(primeiro == null)
+			System.out.println("A lista esta vazia!");		
+		else{
+			Node aux = getPrimeiro();			
+			while(aux != null){
+				String valor = aux.getValor(); 
+				lista.add(valor);
+				aux = aux.getProximo();
+			}
 		}
-		return lista;
-	}		
-	public boolean Procura(int value){
-		Node aux = getFirst();		
+		return lista;		
+	}
+	//Percorre os nós da lista comparando os valores de cada nó com o valor passado por parametro enquanto o próximo nó não for nulo.
+	public boolean Procura(String valor){
+		Node aux = getPrimeiro();
 		while(aux != null){
-			if(value == aux.getValue()){
+			if(valor.equals(aux.getValor())){
 				return true;
 			}
-			aux = aux.getFirst();
+		//Lista Indexada
+			aux = aux.getProximo();
 		}
 		return false;
 	}
-	public void Insere_Inicio(int value){		
+	//Insere valor passado por parametro no inicio da lista, se o valor não existir na lista.
+	public void Insere_Inicio(String valor){		
 		boolean procura = false;		
-		procura = Procura(value);		
+		procura = Procura(valor);		
 		if (procura == false){		
 			Node novo = new Node();			
-			if (first == null){
-				novo.setValue(value);
-				setFirst(novo);
-				setLast(novo);
+			if (primeiro == null){
+				novo.setValor(valor);
+				setPrimeiro(novo);
+				setUltimo(novo);
 			}			
 			else{
-				first.setFirst(novo);
-				novo.setValue(value);
-				novo.setLast(first);
-				setFirst(novo);				
+				primeiro.setAnterior(novo);
+				novo.setValor(valor);
+				novo.setProximo(primeiro);
+				setPrimeiro(novo);				
 			}
 		}
 		else{
 			System.out.println("Valor já existe na lista!");
 		}
 	}
-	public void Insere_Fim(String value) {
+	//Insere valor passado por parametro no fim da lista, se o valor não existir na lista.
+	public void Insere_Fim(String valor) {
 		Node novo = new Node();		
 		boolean procura = false;		
-		procura = Procura(value);		
-		if(last == null){			
-			novo.setValue(value);
-			first = novo;
-			last = novo;			
-		}
+		procura = Procura(valor);		
+		if(procura == true)
+			System.out.println("Valor já existe na lista!");		
 		else{
-			last.setFirst(novo);
-			novo.setValue(value);
-			first = novo;
+			if(ultimo == null){			
+				novo.setValor(valor);
+				primeiro = novo;
+				ultimo = novo;			
+			}
+			else{
+				ultimo.setProximo(novo);
+				novo.setValor(valor);
+				ultimo = novo;
+			}
 		}
-	}
-}	
-
+	}	
+}

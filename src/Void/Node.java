@@ -1,3 +1,4 @@
+package Void;
 
 public class Node {
 	private Node anterior;		
