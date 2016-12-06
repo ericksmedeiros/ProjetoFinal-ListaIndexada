@@ -18,27 +18,27 @@ public class Lista {
 	public Node getLast() {
 		return last;
 	}
-	public ArrayList<String> Listar(){
-		ArrayList<String> lista = new ArrayList<String>();		
+	public ArrayList<int> Listar(){
+		ArrayList<int> lista = new ArrayList<int>();		
 		Node aux = getFirst();			
 		while(aux != null){
-			String vl = aux.getValue(); 
+			int vl = aux.getValue(); 
 			lista.add(vl);
 			aux = aux.getLast();
 		}
 		return lista;
 	}		
-	public boolean Procura(String valor){
+	public boolean Procura(int value){
 		Node aux = getFirst();		
 		while(aux != null){
-			if(valor.equals(aux.getValue())){
+			if(value == aux.getValue()){
 				return true;
 			}
 			aux = aux.getFirst();
 		}
 		return false;
 	}
-	public void Insere_Inicio(String value){		
+	public void Insere_Inicio(int value){		
 		boolean procura = false;		
 		procura = Procura(value);		
 		if (procura == false){		

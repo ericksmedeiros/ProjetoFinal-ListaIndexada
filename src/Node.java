@@ -2,7 +2,7 @@
 public class Node {
 	private Node 	first;
 	private Node	last;
-	private String 	value;
+	private int 	value;
 	
 	public Node getFirst() {
 		return first;
@@ -16,10 +16,10 @@ public class Node {
 	public void setLast(Node last) {
 		this.last = last;
 	}
-	public String getValue() {
+	public int getValue() {
 		return value;
 	}
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 			
